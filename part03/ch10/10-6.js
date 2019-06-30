@@ -1,6 +1,6 @@
 const { interval, of, throwError } = require('rxjs');
 const { take, mergeMap, tap, retryWhen, scan, catchError } = require('rxjs/operators');
-const n = 2;
+const n = 2; // 시도 횟수. 
 interval(100)
     .pipe(
         take(30),
@@ -23,7 +23,7 @@ interval(100)
                             { count: 0 }
                         ),
                         mergeMap(errorInfo => {
-                            if (errorInfo.count === n + 1) {
+                            if (errorInfo.count === n + 1) { // 재시도 횟수를 넘으면 에러를 발생
                                 return throwError(errorInfo.error);
                             }
                             return of(errorInfo);

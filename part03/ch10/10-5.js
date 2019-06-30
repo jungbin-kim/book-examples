@@ -12,7 +12,7 @@ interval(100)
                 }),
                 retryWhen(errors => {
                     return errors.pipe(
-                        take(2),
+                        take(2), // take를 이용해서 원하는 재시도 횟수를 지정. retryWhen의 notifier에서 리턴하는 옵저버블이 값을 두번만 발행하도록 해줌.
                         scan(
                             (acc, error) => {
                                 return {

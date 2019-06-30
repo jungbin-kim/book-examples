@@ -11,8 +11,8 @@ interval(100)
                         throw new Error(`RANDOM ERROR ${value}`);
                     }
                 }),
-                retryWhen(errors => {
-                    return errors.pipe(
+                retryWhen(errors => { // 에러를 전달받아
+                    return errors.pipe( // 특정 옵저버블을 반환. 이 경우에는 에러 발생을 누적해서 로그를 남기는 옵저버블.
                         scan(
                             (acc, error) => {
                                 return {

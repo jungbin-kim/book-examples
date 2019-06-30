@@ -10,7 +10,7 @@ interval(100)
                         throw new Error(`RANDOM ERROR ${value}`);
                     }
                 }),
-                retry(10), // retry횟수와 유무에 따라 에러를 방지 할 수 있음
+                retry(1), // retry횟수와 유무에 따라 에러를 방지 할 수 있음. 1일 경우 한번 retry하고 성공일 경우 catchError로 가지 않는다.
                 catchError(err => of(err.message))
             );
         })
