@@ -1,6 +1,6 @@
 const { concat, range } = require('rxjs');
 const { tap } = require('rxjs/operators');
-
+// 8-3 코드에서 tap에 들어가는 람다들이 프로퍼티가 붙은 형태다.
 const observer1 = {
     next: x => console.log(`tap next: ${x} STREAM 1`),
     error: err => console.error(`tap ERROR: ${err} STREAM 1`),
