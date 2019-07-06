@@ -20,6 +20,11 @@ subject.subscribe(observerA);
 subject.subscribe(observerB);
 subject.subscribe(observerC);
 
-subject.complete();
+subject.complete(); // complete가 호출된 시점 이후로도 값을 전파하지 않는다.
 subject.next(4);
 subject.error(new Error('error!'));
+/*
+observerA: complete
+observerB: complete
+observerC: complete
+*/

@@ -16,4 +16,19 @@ const observerB = {
 };
 
 intervalSource$.subscribe(observerA);
-setTimeout(() => intervalSource$.subscribe(observerB), 2000);
+setTimeout(() => intervalSource$.subscribe(observerB), 2000); // 2초 뒤에 observerB 가 intervalSource$ 구독
+/*
+interval 생성 함수를 이용한 콜드 옵저버블 동작:
+observerA: 0
+observerA: 1
+observerA: 2
+observerA: 3
+observerB: 0 // observerB 가 intervalSource$의 처음부터 구독된다.
+observerA: 4
+observerA: complete
+observerB: 1
+observerB: 2
+observerB: 3
+observerB: 4
+observerB: complete
+*/
