@@ -16,8 +16,10 @@ const testSource$ = interval(500).pipe(
 
 const a = testSource$.subscribe(x => console.log(`a: ${x}`));
 const b = testSource$.subscribe(x => console.log(`b: ${x}`));
+// testSource$.connect(); 가 생략될 수 있다.
 
 setTimeout(() => {
     console.log('timeout');
     testSource$.subscribe(x => console.log(`c: ${x}`));
+    // publish로 할 경우 connect 함수 자체를 호출 하지 않음.
 }, 3000);
